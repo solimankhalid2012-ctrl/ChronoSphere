@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>ChronoSphere — الزمن في لمحة</title>
+  <meta name="description" content="تابع الوقت الحالي في أشهر مدن العالم مباشرة - ChronoSphere">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ChronoSphere">
+  
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="apple-touch-icon" href="assets/logo.svg">
+  <link rel="manifest" href="manifest.json">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- الخلفية التفاعلية -->
+  <div class="bg-canvas">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grid-overlay"></div>
+    <div class="noise"></div>
+  </div>
+
+  <!-- مؤشر الماوس المخصص -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- الهيدر -->
+  <header class="header">
+    <div class="logo" data-reveal>
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="3"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/>
+          <line x1="50" y1="50" x2="50" y2="20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <line x1="50" y1="50" x2="72" y2="60" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="4" fill="currentColor"/>
+        </svg>
+      </div>
+      <h1>
+        <span class="letter">C</span><span class="letter">h</span><span class="letter">r</span><span class="letter">o</span><span class="letter">n</span><span class="letter">o</span><span class="letter">S</span><span class="letter">p</span><span class="letter">h</span><span class="letter">e</span><span class="letter">r</span><span class="letter">e</span>
+      </h1>
+    </div>
+    <p class="tagline" data-reveal data-delay="200">
+      <span class="line"></span>
+      16 مدينة حول العالم · اضغط لرؤية الزمن بحجمه الكامل
+      <span class="line"></span>
+    </p>
+  </header>
+
+  <!-- شبكة الساعات -->
+  <main class="clocks-grid">
+    
+    <!-- 1 -->
+    <div class="clock-card" data-tz="Asia/Jerusalem" data-city="القدس" data-flag="🇮🇱">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇮🇱</span>
+          <span class="card-num">01</span>
+        </div>
+        <h2 class="card-city">القدس</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="clock-card" data-tz="Europe/London" data-city="لندن" data-flag="🇬🇧">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇬🇧</span>
+          <span class="card-num">02</span>
+        </div>
+        <h2 class="card-city">لندن</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="clock-card" data-tz="America/New_York" data-city="نيويورك" data-flag="🇺🇸">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇺🇸</span>
+          <span class="card-num">03</span>
+        </div>
+        <h2 class="card-city">نيويورك</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="clock-card" data-tz="Asia/Tokyo" data-city="طوكيو" data-flag="🇯🇵">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇯🇵</span>
+          <span class="card-num">04</span>
+        </div>
+        <h2 class="card-city">طوكيو</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="clock-card" data-tz="Asia/Dubai" data-city="دبي" data-flag="🇦🇪">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇦🇪</span>
+          <span class="card-num">05</span>
+        </div>
+        <h2 class="card-city">دبي</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="clock-card" data-tz="Europe/Paris" data-city="باريس" data-flag="🇫🇷">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇫🇷</span>
+          <span class="card-num">06</span>
+        </div>
+        <h2 class="card-city">باريس</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="clock-card" data-tz="Europe/Berlin" data-city="برلين" data-flag="🇩🇪">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇩🇪</span>
+          <span class="card-num">07</span>
+        </div>
+        <h2 class="card-city">برلين</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="clock-card" data-tz="Europe/Moscow" data-city="موسكو" data-flag="🇷🇺">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇷🇺</span>
+          <span class="card-num">08</span>
+        </div>
+        <h2 class="card-city">موسكو</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="clock-card" data-tz="Asia/Shanghai" data-city="شنغهاي" data-flag="🇨🇳">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇨🇳</span>
+          <span class="card-num">09</span>
+        </div>
+        <h2 class="card-city">شنغهاي</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="clock-card" data-tz="Asia/Singapore" data-city="سنغافورة" data-flag="🇸🇬">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇸🇬</span>
+          <span class="card-num">10</span>
+        </div>
+        <h2 class="card-city">سنغافورة</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="clock-card" data-tz="Australia/Sydney" data-city="سيدني" data-flag="🇦🇺">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇦🇺</span>
+          <span class="card-num">11</span>
+        </div>
+        <h2 class="card-city">سيدني</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="clock-card" data-tz="America/Los_Angeles" data-city="لوس أنجلوس" data-flag="🇺🇸">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇺🇸</span>
+          <span class="card-num">12</span>
+        </div>
+        <h2 class="card-city">لوس أنجلوس</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="clock-card" data-tz="America/Sao_Paulo" data-city="ساو باولو" data-flag="🇧🇷">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇧🇷</span>
+          <span class="card-num">13</span>
+        </div>
+        <h2 class="card-city">ساو باولو</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="clock-card" data-tz="Africa/Cairo" data-city="القاهرة" data-flag="🇪🇬">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇪🇬</span>
+          <span class="card-num">14</span>
+        </div>
+        <h2 class="card-city">القاهرة</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="clock-card" data-tz="Asia/Istanbul" data-city="إسطنبول" data-flag="🇹🇷">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇹🇷</span>
+          <span class="card-num">15</span>
+        </div>
+        <h2 class="card-city">إسطنبول</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+    <!-- 16 -->
+    <div class="clock-card" data-tz="Asia/Kolkata" data-city="مومباي" data-flag="🇮🇳">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-flag">🇮🇳</span>
+          <span class="card-num">16</span>
+        </div>
+        <h2 class="card-city">مومباي</h2>
+        <div class="card-time" dir="ltr">--:--:--</div>
+        <div class="card-date">---</div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- الفوتر -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-mark">◐</div>
+      <p>© 2025 ChronoSphere — الزمن في لمحة</p>
+    </div>
+  </footer>
+
+  <!-- 🎬 شاشة الساعة العملاقة -->
+  <div class="theater" id="theater">
+    <div class="theater-backdrop" id="theaterBackdrop"></div>
+
+    <div class="theater-deco deco-1"></div>
+    <div class="theater-deco deco-2"></div>
+    <div class="theater-deco deco-3"></div>
+
+    <button class="theater-close" id="theaterClose" aria-label="إغلاق">
+      <svg viewBox="0 0 24 24" width="22" height="22">
+        <path d="M6 6 L18 18 M18 6 L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="theater-content">
+
+      <div class="theater-top">
+        <span class="theater-flag" id="theaterFlag">🌍</span>
+        <h2 class="theater-city" id="theaterCity">المدينة</h2>
+      </div>
+
+      <div class="theater-clock" id="theaterClock" dir="ltr">
+        <div class="time-group">
+          <span class="digit" data-type="h" data-pos="0">0</span>
+          <span class="digit" data-type="h" data-pos="1">0</span>
+        </div>
+        <span class="sep">:</span>
+        <div class="time-group">
+          <span class="digit" data-type="m" data-pos="0">0</span>
+          <span class="digit" data-type="m" data-pos="1">0</span>
+        </div>
+        <span class="sep">:</span>
+        <div class="time-group seconds">
+          <span class="digit" data-type="s" data-pos="0">0</span>
+          <span class="digit" data-type="s" data-pos="1">0</span>
+        </div>
+      </div>
+
+      <div class="theater-date" id="theaterDate">---</div>
+
+      <div class="theater-tz" dir="ltr">
+        <span class="tz-line"></span>
+        <span id="theaterTz">---</span>
+        <span class="tz-line"></span>
+      </div>
+
+      <div class="theater-progress" dir="ltr">
+        <div class="theater-progress-head">
+          <span>DAY PROGRESS</span>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="theater-progress-foot">
+          <span>00:00</span>
+          <span>24:00</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // تسجيل Service Worker (PWA)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('✅ SW registered'))
+          .catch(err => console.log('❌ SW error:', err));
+      });
+    }
+  </script>
+</body>
+</html>

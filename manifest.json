@@ -1,0 +1,21 @@
+{
+  "name": "ChronoSphere — الزمن في لمحة",
+  "short_name": "ChronoSphere",
+  "description": "تابع الوقت الحالي في 16 مدينة حول العالم",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    {
+      "src": "assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
